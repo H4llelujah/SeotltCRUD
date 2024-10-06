@@ -7,6 +7,6 @@ export { NewsList } from "./ui/NewsList/NewsList";
 
 export { NewsDetails } from "./ui/NewsDetails/NewsDetails";
 
-export { getNewsData, getNewsForm } from "./model/selectors/NewsSelector";
+export { getNewsData, getNewsForm, getNewsError } from "./model/selectors/NewsSelector";
 
 export { NewsBlockType } from "./model/consts/newsConsts";

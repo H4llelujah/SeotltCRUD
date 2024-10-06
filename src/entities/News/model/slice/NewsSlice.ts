@@ -7,12 +7,15 @@ import {
 } from "@/shared/consts/localStorage";
 import { NewsBlockType } from "../consts/newsConsts";
 import { v4 as uuidv4 } from "uuid";
+import { useNavigate } from "react-router-dom";
+import { getRouteNews } from "@/shared/consts/router";
 
 const initialState: NewsSchema = {
     data: undefined,
     isLoading: false,
     error: undefined,
     form: undefined,
+    succes: undefined,
 };
 
 export const NewsSlice = createSlice({
@@ -125,39 +128,53 @@ export const NewsSlice = createSlice({
             localStorage.removeItem(LOCAL_STORAGE_NEWS_EDIT_KEY);
         },
         onSaveEdit: (state) => {
-            const oldNewsList = localStorage.getItem(NEWS_LOCALSTORAGE_KEY);
-            let newNewsList;
+            if (
+                state.form?.blocks &&
+                state.form?.img &&
+                state.form.title &&
+                state.form.subtitle &&
+                state.form.blocks.length > 0
+            ) {
+                const oldNewsList = localStorage.getItem(NEWS_LOCALSTORAGE_KEY);
+                let newNewsList;
 
-            if (oldNewsList) {
-                const oldNewsListParsed = JSON.parse(oldNewsList) as News[];
+                if (oldNewsList) {
+                    const oldNewsListParsed = JSON.parse(oldNewsList) as News[];
 
-                if (state.form?.id) {
-                    const oldNewsListFiltered = oldNewsListParsed.filter(
-                        (item) => item.id !== state.form?.id
-                    );
-                    newNewsList = [...oldNewsListFiltered, state.form];
-                } else {
-                    const today = new Date();
+                    if (state.form?.id) {
+                        const oldNewsListFiltered = oldNewsListParsed.filter(
+                            (item) => item.id !== state.form?.id
+                        );
+                        newNewsList = [...oldNewsListFiltered, state.form];
+                    } else {
+                        const today = new Date();
 
-                    const day = String(today.getDate()).padStart(2, "0");
-                    const month = String(today.getMonth() + 1).padStart(2, "0");
-                    const year = today.getFullYear();
+                        const day = String(today.getDate()).padStart(2, "0");
+                        const month = String(today.getMonth() + 1).padStart(
+                            2,
+                            "0"
+                        );
+                        const year = today.getFullYear();
 
-                    const formattedDate = `${day}.${month}.${year}`;
-                    state.form = {
-                        ...state.form,
-                        id: uuidv4(),
-                        createdAt: formattedDate,
-                    };
-                    newNewsList = [...oldNewsListParsed, state.form];
+                        const formattedDate = `${day}.${month}.${year}`;
+                        state.form = {
+                            ...state.form,
+                            id: uuidv4(),
+                            createdAt: formattedDate,
+                        };
+                        newNewsList = [...oldNewsListParsed, state.form];
+                    }
                 }
-            }
 
-            localStorage.setItem(
-                NEWS_LOCALSTORAGE_KEY,
-                JSON.stringify(newNewsList)
-            );
-            localStorage.removeItem(LOCAL_STORAGE_NEWS_EDIT_KEY);
+                localStorage.setItem(
+                    NEWS_LOCALSTORAGE_KEY,
+                    JSON.stringify(newNewsList)
+                );
+                localStorage.removeItem(LOCAL_STORAGE_NEWS_EDIT_KEY);
+                state.succes = 'Изменения успешно применены'
+            } else {
+                state.error = 'Заполните все обязательные поля!'
+            }
         },
     },
 });

@@ -5,4 +5,5 @@ export interface NewsSchema {
     error?: string;
     data?: News;
     form?: Partial<News>;
+    succes?: string;
 }

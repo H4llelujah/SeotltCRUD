@@ -6,11 +6,11 @@ import { Card } from "@/shared/ui/Card/Card";
 import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 import { HStack } from "@/shared/ui/Stack/HStack/HStack";
 import { Text } from "@/shared/ui/Text/Text";
-import { Button } from "@/shared/ui/Button/Button";
 import { Loader } from "@/shared/ui/Loader/Loader";
 import { AppImage } from "@/shared/ui/AppImage/AppImage";
 import { AppLink } from "@/shared/ui/AppLink/AppLink";
 import { getRouteNewsDetails } from "@/shared/consts/router";
+import { ImageErrorFallback } from "@/shared/ui/ImageErrorFallback/ImageErrorFallback";
 
 interface NewsListItemProps {
     className?: string;
@@ -26,6 +26,7 @@ export const NewsListItem = memo((props: NewsListItemProps) => {
                     className={cls.img}
                     src={news.img}
                     fallback={<Loader />}
+                    errorFallback={<ImageErrorFallback />}
                 />
                 <Text title={news.title} />
                 <Text className={cls.subtitle} text={news.subtitle} />

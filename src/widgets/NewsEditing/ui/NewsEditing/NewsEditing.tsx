@@ -1,6 +1,11 @@
-import { memo, useCallback } from "react";
+import { memo, useCallback, useEffect } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import { News, NewsActions, NewsBlockType } from "@/entities/News";
+import {
+    getNewsError,
+    News,
+    NewsActions,
+    NewsBlockType,
+} from "@/entities/News";
 import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 import { HStack } from "@/shared/ui/Stack/HStack/HStack";
 import { Button } from "@/shared/ui/Button/Button";
@@ -11,6 +16,9 @@ import { renderNewsBlock } from "@/entities/News/ui/NewsDetails/renderBlock";
 import { NewsBlockCreatorChooser } from "@/features/newsBlockCreator";
 import { useNavigate } from "react-router-dom";
 import { getRouteNews } from "@/shared/consts/router";
+import { useSelector } from "react-redux";
+import { Text } from "@/shared/ui/Text/Text";
+import { getNewsSucces } from "@/entities/News/model/selectors/NewsSelector";
 
 interface NewsEditingProps {
     className?: string;
@@ -21,6 +29,8 @@ interface NewsEditingProps {
 export const NewsEditing = memo((props: NewsEditingProps) => {
     const { className, isEdit, news } = props;
     const dispatch = useAppDispatch();
+    const error = useSelector(getNewsError);
+    const succes = useSelector(getNewsSucces);
     const navigate = useNavigate();
 
     const onChangeImg = useCallback((value?: string) => {
@@ -49,18 +59,22 @@ export const NewsEditing = memo((props: NewsEditingProps) => {
         []
     );
 
+    useEffect(() => {
+        if (succes) {
+            navigate(getRouteNews());
+        }
+    }, [succes])
+
     const onDelete = useCallback((blockId: string) => {
         dispatch(NewsActions.deleteBlock(blockId));
     }, []);
 
     const onSaveNews = useCallback(() => {
         dispatch(NewsActions.onSaveEdit());
-        navigate(getRouteNews());
     }, []);
 
     const onCancelEdit = useCallback(() => {
         dispatch(NewsActions.onCancelEdit());
-        navigate(getRouteNews());
     }, []);
 
     return (
@@ -73,6 +87,15 @@ export const NewsEditing = memo((props: NewsEditingProps) => {
                     Сохранить
                 </Button>
             </HStack>
+            {error && (
+                <Text
+                    variant="error"
+                    text="Заполните обязательные поля и добавьте хотя бы 1 блок! (заголовок, подзаголовок, основное изображение)"
+                />
+            )}
+            {succes && (
+                <Text text={succes} variant="accent"/>
+            )}
             <Card max padding="24">
                 <NewsCommonInfoEdit
                     onChangeImg={onChangeImg}

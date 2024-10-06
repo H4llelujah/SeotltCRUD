@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { Card } from "@/shared/ui/Card/Card";
 import { VStack } from "@/shared/ui/Stack/VStack/VStack";
+import { ImageErrorFallback } from "@/shared/ui/ImageErrorFallback/ImageErrorFallback";
 
 interface NewsDetailsProps {
     className?: string;
@@ -28,6 +29,7 @@ export const NewsDetails = memo((props: NewsDetailsProps) => {
 
     return (
         <Card
+            max
             padding="16"
             className={classNames(cls.NewsDetails, {}, [className])}
         >
@@ -37,6 +39,7 @@ export const NewsDetails = memo((props: NewsDetailsProps) => {
                     className={cls.img}
                     src={news.img}
                     fallback={<Loader />}
+                    errorFallback={<ImageErrorFallback />}
                 />
                 {news.blocks.map((block) => renderNewsBlock(block))}
             </VStack>
