@@ -28,9 +28,9 @@ export const NewsListItem = memo((props: NewsListItemProps) => {
                     fallback={<Loader />}
                 />
                 <Text title={news.title} />
-                <Text text={news.subtitle} />
-                <HStack max justify="between">
-                    <div>{news.createdAt}</div>
+                <Text className={cls.subtitle} text={news.subtitle} />
+                <HStack className={cls.bottom} max justify="between">
+                    <Text text={news.createdAt} />
                     <AppLink to={getRouteNewsDetails(news.id)}>
                         Подробнее
                     </AppLink>

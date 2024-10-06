@@ -9,6 +9,8 @@ import { NewsCommonInfoEdit } from "@/features/newsCommonInfoEdit";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { renderNewsBlock } from "@/entities/News/ui/NewsDetails/renderBlock";
 import { NewsBlockCreatorChooser } from "@/features/newsBlockCreator";
+import { useNavigate } from "react-router-dom";
+import { getRouteNews } from "@/shared/consts/router";
 
 interface NewsEditingProps {
     className?: string;
@@ -19,6 +21,7 @@ interface NewsEditingProps {
 export const NewsEditing = memo((props: NewsEditingProps) => {
     const { className, isEdit, news } = props;
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
 
     const onChangeImg = useCallback((value?: string) => {
         dispatch(NewsActions.updateNews({ img: value || "" }));
@@ -52,15 +55,18 @@ export const NewsEditing = memo((props: NewsEditingProps) => {
 
     const onSaveNews = useCallback(() => {
         dispatch(NewsActions.onSaveEdit());
-        console.log(1);
+        navigate(getRouteNews());
     }, []);
 
-    const onCancelEdit = useCallback(() => {}, []);
+    const onCancelEdit = useCallback(() => {
+        dispatch(NewsActions.onCancelEdit());
+        navigate(getRouteNews());
+    }, []);
 
     return (
         <VStack max gap="16" className={classNames("", {}, [className])}>
             <HStack justify="between" max>
-                <Button onClick={onSaveNews} color="error">
+                <Button onClick={onCancelEdit} color="error">
                     Отменить
                 </Button>
                 <Button onClick={onSaveNews} color="success">

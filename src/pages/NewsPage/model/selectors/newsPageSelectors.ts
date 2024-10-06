@@ -1,7 +1,7 @@
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { createSelector } from "@reduxjs/toolkit";
 
-export const getNewsList = (state: StateSchema) => state.newsPage.data;
+export const getNewsList = (state: StateSchema) => state.newsPage.data || [];
 
 export const getNewsById = createSelector(
     getNewsList,

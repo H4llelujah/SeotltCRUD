@@ -20,10 +20,6 @@ const NewsPage = memo((props: NewsPageProps) => {
         dispatch(NewsPageActions.initNewsList());
     }, []);
 
-    if (!news) {
-        return <div>Произошла ошибка!</div>;
-    }
-
     return (
         <div className={classNames("", {}, [className])}>
             <NewsList isLoading={false} news={news} />

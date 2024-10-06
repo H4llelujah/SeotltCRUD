@@ -1,8 +1,18 @@
 .NewsListItem {
     max-width: 350px;
+    height: 400px;
 }
 
 .img {
     width: 100%;
     object-fit: cover;
+}
+
+.subtitle {
+   max-height: 96px;
+   overflow: hidden;
+}
+
+.bottomInfo {
+    margin-top: auto;
 }
