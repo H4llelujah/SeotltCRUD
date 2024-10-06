@@ -33,4 +33,8 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
         path: getRouteNewsCreate(),
         element: <NewsEditPage />,
     },
+    [AppRoutes.NOT_FOUND]: {
+        path: '*',
+        element: <MainPage />
+    }
 };

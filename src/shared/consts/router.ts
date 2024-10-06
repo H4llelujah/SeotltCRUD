@@ -4,6 +4,7 @@ export enum AppRoutes {
     NEWS_DETAILS = "news_details",
     NEWS_EDIT = "news_edit",
     NEWS_CREATE = "news_create",
+    NOT_FOUND = "not_found",
 }
 
 export const getRouteMain = () => "/";
