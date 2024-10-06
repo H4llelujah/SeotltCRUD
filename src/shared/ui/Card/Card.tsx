@@ -1,15 +1,15 @@
-import { HTMLAttributes, ReactNode } from 'react';
+import { HTMLAttributes, ReactNode } from "react";
 import {
     AdditionalClasses,
     classNames,
-} from '@/shared/lib/classNames/classNames';
-import cls from './Card.module.scss';
+} from "@/shared/lib/classNames/classNames";
+import cls from "./Card.module.scss";
 
-export type CardVariant = 'normal' | 'outlined' | 'light';
+export type CardVariant = "normal" | "outlined" | "light";
 
-export type CardPadding = '0' | '8' | '16' | '24';
+export type CardPadding = "0" | "8" | "16" | "24";
 
-export type CardBorder = 'round' | 'normal' | 'partial';
+export type CardBorder = "round" | "normal" | "partial";
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
     className?: string;
@@ -22,21 +22,21 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const mapPaddingToClass: Record<CardPadding, string> = {
-    '0': 'gap_0',
-    '8': 'gap_8',
-    '16': 'gap_16',
-    '24': 'gap_24',
+    "0": "gap_0",
+    "8": "gap_8",
+    "16": "gap_16",
+    "24": "gap_24",
 };
 
 export const Card = (props: CardProps) => {
     const {
         className,
         children,
-        variant = 'normal',
+        variant = "normal",
         max,
         fullHeight,
-        padding = '8',
-        border = 'normal',
+        padding = "8",
+        border = "normal",
         ...otherProps
     } = props;
 
@@ -57,7 +57,7 @@ export const Card = (props: CardProps) => {
                     [cls.max]: max,
                     [cls.fullHeight]: fullHeight,
                 },
-                additionalClasses,
+                additionalClasses
             )}
             {...otherProps}
         >

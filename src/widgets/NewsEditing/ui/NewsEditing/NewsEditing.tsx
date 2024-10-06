@@ -63,7 +63,9 @@ export const NewsEditing = memo((props: NewsEditingProps) => {
                 <Button onClick={onSaveNews} color="error">
                     Отменить
                 </Button>
-                <Button onClick={onSaveNews} color="success">Сохранить</Button>
+                <Button onClick={onSaveNews} color="success">
+                    Сохранить
+                </Button>
             </HStack>
             <Card max padding="24">
                 <NewsCommonInfoEdit

@@ -22,9 +22,9 @@ const NewsDetailsPage = (props: NewsDetailsPageProps) => {
 
     useEffect(() => {
         if (id) {
-            dispatch(NewsActions.newsInit(id))
+            dispatch(NewsActions.newsInit(id));
         }
-    }, [])
+    }, []);
 
     return (
         <VStack

@@ -4,7 +4,7 @@ export type AdditionalClasses = Array<string | undefined>;
 export function classNames(
     cls: string,
     mods: Mods = {},
-    additional: AdditionalClasses = [],
+    additional: AdditionalClasses = []
 ): string {
     return [
         cls,
@@ -12,5 +12,5 @@ export function classNames(
         ...Object.entries(mods)
             .filter(([className, value]) => Boolean(value))
             .map(([className]) => className),
-    ].join(' ');
+    ].join(" ");
 }

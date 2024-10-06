@@ -1,11 +1,11 @@
-import { memo } from 'react';
+import { memo } from "react";
 import {
     AdditionalClasses,
     classNames,
-} from '@/shared/lib/classNames/classNames';
-import cls from './Textarea.module.scss';
+} from "@/shared/lib/classNames/classNames";
+import cls from "./Textarea.module.scss";
 
-export type TextareaBorder = 'round' | 'normal' | 'partial';
+export type TextareaBorder = "round" | "normal" | "partial";
 
 interface TextareaProps {
     className?: string;
@@ -15,7 +15,6 @@ interface TextareaProps {
 
 export const Textarea = memo((props: TextareaProps) => {
     const { className, value, onChange } = props;
-
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         onChange?.(e.target.value);

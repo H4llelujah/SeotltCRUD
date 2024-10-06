@@ -27,10 +27,17 @@ export const NewsDetails = memo((props: NewsDetailsProps) => {
     }
 
     return (
-        <Card padding="16" className={classNames(cls.NewsDetails, {}, [className])}>
+        <Card
+            padding="16"
+            className={classNames(cls.NewsDetails, {}, [className])}
+        >
             <VStack gap="16">
                 <Text size="l" bold title={news.title} text={news.subtitle} />
-                <AppImage className={cls.img} src={news.img} fallback={<Loader />} />
+                <AppImage
+                    className={cls.img}
+                    src={news.img}
+                    fallback={<Loader />}
+                />
                 {news.blocks.map((block) => renderNewsBlock(block))}
             </VStack>
         </Card>

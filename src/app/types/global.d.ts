@@ -1,4 +1,4 @@
-declare module '*.scss' {
+declare module "*.scss" {
     interface IClassNames {
         [className: string]: string;
     }
@@ -6,9 +6,9 @@ declare module '*.scss' {
     export = classnames;
 }
 
-declare module '*.png';
-declare module '*.jpg';
-declare module '*.jpeg';
+declare module "*.png";
+declare module "*.jpg";
+declare module "*.jpeg";
 
 type DeepPartial<T> = T extends object
     ? {

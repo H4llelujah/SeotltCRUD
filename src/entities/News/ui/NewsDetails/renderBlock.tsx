@@ -2,14 +2,14 @@ import { Button } from "@/shared/ui/Button/Button";
 import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 import { NewsBlockType } from "../../model/consts/newsConsts";
 import { NewsImageBlockComponent } from "../NewsImageBlockComponent/NewsImageBlockComponent";
-import cls from './NewsDetails.module.scss';
+import cls from "./NewsDetails.module.scss";
 import { NewsTextBlockComponent } from "../NewsTextBlockComponent/NewsTextBlockComponent";
 import { NewsBlock } from "../../model/types/News";
 
 export const renderNewsBlock = (
     block: NewsBlock,
     edit?: boolean,
-    onDelete?: (id: string) => void,
+    onDelete?: (id: string) => void
 ) => {
     if (edit && onDelete) {
         switch (block.type) {
@@ -58,7 +58,7 @@ export const renderNewsBlock = (
                     className={cls.block}
                 />
             );
-        
+
         case NewsBlockType.IMAGE:
             return (
                 <NewsImageBlockComponent

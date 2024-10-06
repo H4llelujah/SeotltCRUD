@@ -22,12 +22,18 @@ export const NewsListItem = memo((props: NewsListItemProps) => {
     return (
         <Card className={classNames(cls.NewsListItem, {}, [className])}>
             <VStack>
-                <AppImage className={cls.img} src={news.img} fallback={<Loader />} />
+                <AppImage
+                    className={cls.img}
+                    src={news.img}
+                    fallback={<Loader />}
+                />
                 <Text title={news.title} />
                 <Text text={news.subtitle} />
                 <HStack max justify="between">
                     <div>{news.createdAt}</div>
-                    <AppLink to={getRouteNewsDetails(news.id)}>Подробнее</AppLink>
+                    <AppLink to={getRouteNewsDetails(news.id)}>
+                        Подробнее
+                    </AppLink>
                 </HStack>
             </VStack>
         </Card>

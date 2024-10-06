@@ -5,7 +5,7 @@ import { StoreProvider } from "@/app/providers/StoreProvider";
 import { News } from "@/entities/News";
 import { NewsBlockType } from "./entities/News/model/consts/newsConsts";
 import { NEWS_LOCALSTORAGE_KEY } from "./shared/consts/localStorage";
-import './app/styles/index.scss';
+import "./app/styles/index.scss";
 
 const container = document.getElementById("root");
 
@@ -99,8 +99,6 @@ const initNews: News[] = [
         ],
     },
 ];
-
-
 
 localStorage.setItem(NEWS_LOCALSTORAGE_KEY, JSON.stringify(initNews));
 

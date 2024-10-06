@@ -18,7 +18,7 @@ const NewsPage = memo((props: NewsPageProps) => {
 
     useEffect(() => {
         dispatch(NewsPageActions.initNewsList());
-    }, [])
+    }, []);
 
     if (!news) {
         return <div>Произошла ошибка!</div>;

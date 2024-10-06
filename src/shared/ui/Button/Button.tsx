@@ -3,18 +3,18 @@ import {
     ForwardedRef,
     ReactNode,
     forwardRef,
-} from 'react';
+} from "react";
 import {
     AdditionalClasses,
     Mods,
     classNames,
-} from '@/shared/lib/classNames/classNames';
-import cls from './Button.module.scss';
+} from "@/shared/lib/classNames/classNames";
+import cls from "./Button.module.scss";
 
-export type ButtonVariant = 'clear' | 'outline' | 'filled';
-export type ButtonColor = 'normal' | 'success' | 'error';
+export type ButtonVariant = "clear" | "outline" | "filled";
+export type ButtonColor = "normal" | "success" | "error";
 
-export type ButtonSize = 'm' | 'l' | 'xl';
+export type ButtonSize = "m" | "l" | "xl";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
@@ -35,13 +35,13 @@ export const Button = forwardRef(
         const {
             className,
             children,
-            variant = 'outline',
-            size = 'm',
+            variant = "outline",
+            size = "m",
             disabled,
             fullWidth,
             addonLeft,
             addonRight,
-            color = 'normal',
+            color = "normal",
             ...otherProps
         } = props;
 
@@ -67,5 +67,5 @@ export const Button = forwardRef(
                 {children}
             </button>
         );
-    },
+    }
 );

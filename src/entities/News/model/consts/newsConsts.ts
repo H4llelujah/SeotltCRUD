@@ -1,4 +1,4 @@
 export enum NewsBlockType {
-    TEXT = 'TEXT',
-    IMAGE = 'image',
+    TEXT = "TEXT",
+    IMAGE = "image",
 }
