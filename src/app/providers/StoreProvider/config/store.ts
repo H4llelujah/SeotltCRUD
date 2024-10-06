@@ -1,12 +1,16 @@
 import { counterReducer } from "@/entities/Counter";
 import { configureStore, ReducersMapObject } from "@reduxjs/toolkit";
 import { StateSchema } from "./StateSchema";
+import { NewsReducer } from "@/entities/News";
+import { NewsPageReducer } from "@/pages/NewsPage";
 
 export function createReduxStore(
     initialState?: StateSchema,
 ) {
     const rootReducer: ReducersMapObject<StateSchema> = {
         counter: counterReducer,
+        news: NewsReducer,
+        newsPage: NewsPageReducer,
     };
 
     const store = configureStore({

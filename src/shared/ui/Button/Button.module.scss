@@ -1,0 +1,81 @@
+.Button {
+    cursor: pointer;
+    color: var(--primary-color);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        color: var(--accent-color);
+    }
+}
+
+.withAddon {
+    padding: 0 16px;
+}
+
+.addonLeft,
+.addonRight {
+    display: flex;
+}
+
+.clear {
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.filled {
+    background: var(--inverted-bg-color);
+    border: none;
+    outline: none;
+    border-radius: 34px;
+}
+
+.outline {
+    background: none;
+    border: 2px solid var(--inverted-bg-color);
+    border-radius: 34px;
+
+    &:hover {
+        border: 2px solid var(--accent-color);
+    }
+
+    &.normal {
+        border: 2px solid var(--accent-color);
+    }
+
+    &.error {
+        border: 2px solid var(--cancel-color);
+    }
+
+    &.success {
+        border: 2px solid var(--save-color);
+    }
+}
+
+.m {
+    font: var(--font-m);
+}
+
+.l {
+    font: var(--font-l);
+}
+
+.xl {
+    font: var(--font-xl);
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: auto;
+
+    &:hover {
+        color: var(--text-redesigned);
+    }
+}
+
+.fullWidth {
+    width: 100%;
+}
