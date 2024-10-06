@@ -10,6 +10,7 @@ import { getNewsById } from "@/pages/NewsPage";
 import { useSelector } from "react-redux";
 import { StateSchema } from "@/app/providers/StoreProvider";
 import { Card } from "@/shared/ui/Card/Card";
+import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 
 interface NewsDetailsProps {
     className?: string;
@@ -19,19 +20,19 @@ interface NewsDetailsProps {
 export const NewsDetails = memo((props: NewsDetailsProps) => {
     const { className, id } = props;
 
-    const news = useSelector((state: StateSchema) => 
-        getNewsById(state, id)
-    )
+    const news = useSelector((state: StateSchema) => getNewsById(state, id));
 
     if (!news) {
         return null;
     }
 
     return (
-        <Card className={classNames(cls.NewsDetails, {}, [className])}>
-            <Text title={news.title} text={news.subtitle} />
-            <AppImage src={news.img} fallback={<Loader />} />
-            {news.blocks.map((block) => renderNewsBlock(block))}
+        <Card padding="16" className={classNames(cls.NewsDetails, {}, [className])}>
+            <VStack gap="16">
+                <Text size="l" bold title={news.title} text={news.subtitle} />
+                <AppImage className={cls.img} src={news.img} fallback={<Loader />} />
+                {news.blocks.map((block) => renderNewsBlock(block))}
+            </VStack>
         </Card>
     );
 });

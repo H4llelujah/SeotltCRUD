@@ -22,7 +22,7 @@ export const NewsImageBlockComponent = memo(
                 ])}
             >
                 <Text title={block.title} />
-                <AppImage src={block.src} fallback={<Loader />} />
+                <AppImage className={cls.img} src={block.src} fallback={<Loader />} />
             </div>
         );
     }

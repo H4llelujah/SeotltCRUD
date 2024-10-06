@@ -2,6 +2,8 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./NewsDetailsPage.module.scss";
 import { NewsDetails } from "@/entities/News";
 import { useParams } from "react-router-dom";
+import { NewsDetailsPageHeader } from "../NewsDetailsPageHeader/NewsDetailsPageHeader";
+import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 
 interface NewsDetailsPageProps {
     className?: string;
@@ -16,8 +18,9 @@ export const NewsDetailsPage = (props: NewsDetailsPageProps) => {
     }
 
     return (
-        <div className={classNames(cls.NewsDetailsPage, {}, [className])}>
+        <VStack gap="16" className={classNames(cls.NewsDetailsPage, {}, [className])}>
+            <NewsDetailsPageHeader id={id} />
             <NewsDetails id={id} />
-        </div>
+        </VStack>
     );
 };

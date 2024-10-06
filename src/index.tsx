@@ -45,7 +45,7 @@ const initNews: News[] = [
                 ],
             },
             {
-                id: "1",
+                id: "3",
                 type: NewsBlockType.IMAGE,
                 title: "Title of This block",
                 src: "https://masterpiecer-images.s3.yandex.net/b2d91936767a11eeb11ee6d39d9a42a4:upscaled",
@@ -81,10 +81,20 @@ const initNews: News[] = [
                 ],
             },
             {
-                id: "1",
+                id: "3",
                 type: NewsBlockType.IMAGE,
                 title: "Title of This block",
                 src: "https://masterpiecer-images.s3.yandex.net/b2d91936767a11eeb11ee6d39d9a42a4:upscaled",
+            },
+            {
+                id: "4",
+                type: NewsBlockType.TEXT,
+                title: "Title of This block",
+                paragraphs: [
+                    "This is paragraph 1",
+                    "this is paragraph 2",
+                    "this is something else",
+                ],
             },
         ],
     },

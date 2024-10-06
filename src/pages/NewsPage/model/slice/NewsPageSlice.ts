@@ -19,6 +19,11 @@ export const NewsPageSlice = createSlice({
                 state.data = JSON.parse(news);
             };
         },
+        deleteById: (state, action: PayloadAction<string>) => {
+            const newNews = state.data?.filter((item) => item.id !== action.payload);
+            state.data = newNews;
+            localStorage.setItem(NEWS_LOCALSTORAGE_KEY, JSON.stringify(newNews))
+        }
     },
 });
 
