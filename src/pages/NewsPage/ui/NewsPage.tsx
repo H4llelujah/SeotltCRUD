@@ -8,7 +8,7 @@ interface NewsPageProps {
     className?: string;
 }
 
-export const NewsPage = memo((props: NewsPageProps) => {
+const NewsPage = memo((props: NewsPageProps) => {
     const { className } = props;
 
     const news = useSelector(getNewsList);
@@ -23,3 +23,5 @@ export const NewsPage = memo((props: NewsPageProps) => {
         </div>
     );
 });
+
+export default NewsPage;

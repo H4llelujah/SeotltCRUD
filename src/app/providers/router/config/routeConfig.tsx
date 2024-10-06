@@ -1,6 +1,7 @@
 
 import { MainPage } from "@/pages/MainPage";
 import { NewsDetailsPage } from "@/pages/NewsDetailsPage";
+import { NewsEditPage } from "@/pages/NewsEditPage";
 import { NewsPage } from "@/pages/NewsPage";
 import { AppRoutes, getRouteMain, getRouteNews, getRouteNewsCreate, getRouteNewsDetails, getRouteNewsEdit } from "@/shared/consts/router";
 import { RouteProps } from "react-router-dom";
@@ -20,10 +21,10 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     },
     [AppRoutes.NEWS_EDIT]: {
         path: getRouteNewsEdit(':id'),
-        element: <div></div>,
+        element: <NewsEditPage />,
     },
     [AppRoutes.NEWS_CREATE]: {
         path: getRouteNewsCreate(),
-        element: <div></div>,
+        element: <NewsEditPage />,
     }
 }

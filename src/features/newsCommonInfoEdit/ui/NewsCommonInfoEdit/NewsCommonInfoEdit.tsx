@@ -1,6 +1,5 @@
 import { memo } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
-import cls from "./NewsCommonInfoEdit.module.scss";
 import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 import { HStack } from "@/shared/ui/Stack/HStack/HStack";
 import { Input } from "@/shared/ui/Input/Input";
@@ -28,17 +27,31 @@ export const NewsCommonInfoEdit = memo((props: NewsCommonInfoEditProps) => {
     } = props;
 
     return (
-        <VStack className={classNames(cls.NewsCommonInfoEdit, {}, [className])}>
-            <HStack>
-                <Input placeholder="Заголовок новости" />
+        <VStack className={classNames("", {}, [className])}>
+            <HStack max>
+                <Input
+                    value={title}
+                    onChange={onChangeTitle}
+                    placeholder="Заголовок"
+                />
             </HStack>
-            <HStack>
-                <Input placeholder="Подзаголовок" />
+            <HStack max>
+                <Input
+                    value={subtitle}
+                    onChange={onChangeSubtitle}
+                    placeholder="Подзаголовок"
+                />
             </HStack>
-            <HStack>
-                <Input placeholder="Превью-фото(введите ссылку на изображение)" />
+            <HStack max>
+                <Input
+                    value={imgLink}
+                    onChange={onChangeImg}
+                    placeholder="Превью-фото(введите ссылку на изображение)"
+                />
             </HStack>
-            <AppImage />
+            <HStack max>
+                <AppImage src={imgLink} />
+            </HStack>
         </VStack>
     );
 });

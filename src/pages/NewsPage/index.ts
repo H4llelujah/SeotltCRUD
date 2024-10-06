@@ -1,4 +1,4 @@
-export { NewsPage } from "./ui/NewsPage";
+export { NewsPageAsync as NewsPage } from "./ui/NewsPageAsync";
 
 export { NewsPageActions, NewsPageReducer } from "./model/slice/NewsPageSlice";
 

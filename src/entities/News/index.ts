@@ -5,6 +5,8 @@ export { NewsActions, NewsReducer } from "./model/slice/NewsSlice";
 
 export { NewsList } from "./ui/NewsList/NewsList";
 
-export { NewsDetails } from './ui/NewsDetails/NewsDetails';
+export { NewsDetails } from "./ui/NewsDetails/NewsDetails";
 
-export { getNews } from "./model/selectors/getNews";
+export { getNewsData, getNewsForm } from "./model/selectors/NewsSelector";
+
+export { NewsBlockType } from "./model/consts/newsConsts";
