@@ -8,6 +8,7 @@ import { NewsImageBlockComponent } from "@/entities/News/ui/NewsImageBlockCompon
 import { HStack } from "@/shared/ui/Stack/HStack/HStack";
 import { NewsImageBlockCreator } from "../NewsImageBlockCreator/NewsImageBlockCreator";
 import { Text } from "@/shared/ui/Text/Text";
+import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 
 interface NewsBlockCreatorChooserProps {
     className?: string;
@@ -68,7 +69,9 @@ export const NewsBlockCreatorChooser = memo(
         }, []);
 
         return (
-            <div
+            <VStack
+                gap="8"
+                max
                 className={classNames(cls.NewsBlockCreatorChooser, {}, [
                     className,
                 ])}
@@ -100,7 +103,7 @@ export const NewsBlockCreatorChooser = memo(
                     />
                 )}
                 {isVisible && (
-                    <HStack justify="between">
+                    <HStack gap="8" justify="between">
                         <Button onClick={onSave} color="success">
                             Сохранить
                         </Button>
@@ -109,7 +112,7 @@ export const NewsBlockCreatorChooser = memo(
                         </Button>
                     </HStack>
                 )}
-            </div>
+            </VStack>
         );
     }
 );

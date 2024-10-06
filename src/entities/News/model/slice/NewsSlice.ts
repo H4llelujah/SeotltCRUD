@@ -6,7 +6,7 @@ import {
     NEWS_LOCALSTORAGE_KEY,
 } from "@/shared/consts/localStorage";
 import { NewsBlockType } from "../consts/newsConsts";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 const initialState: NewsSchema = {
     data: undefined,
@@ -84,7 +84,7 @@ export const NewsSlice = createSlice({
                     id: uuidv4(),
                     type: NewsBlockType.TEXT,
                     title: payload.title,
-                    paragraphs: payload.value.split('\n'),
+                    paragraphs: payload.value.split("\n"),
                 };
             } else {
                 newBlock = {
@@ -101,19 +101,64 @@ export const NewsSlice = createSlice({
 
                 localStorage.setItem(
                     LOCAL_STORAGE_NEWS_EDIT_KEY,
-                    JSON.stringify(state.form),
+                    JSON.stringify(state.form)
                 );
             }
         },
         deleteBlock: (state, action: PayloadAction<string>) => {
             if (state.form) {
-                state.form.blocks = state.form.blocks?.filter((item) => item.id !== action.payload)
+                state.form.blocks = state.form.blocks?.filter(
+                    (item) => item.id !== action.payload
+                );
             }
             localStorage.setItem(
                 LOCAL_STORAGE_NEWS_EDIT_KEY,
                 JSON.stringify(state.form)
             );
-        }
+        },
+        onCancelEdit: (state) => {
+            if (state.data) {
+                state.form = state.data;
+            } else {
+                state.form = undefined;
+            }
+            localStorage.removeItem(LOCAL_STORAGE_NEWS_EDIT_KEY);
+        },
+        onSaveEdit: (state) => {
+            const oldNewsList = localStorage.getItem(NEWS_LOCALSTORAGE_KEY);
+            let newNewsList;
+
+            if (oldNewsList) {
+                const oldNewsListParsed = JSON.parse(oldNewsList) as News[];
+
+                if (state.form?.id) {
+                    const oldNewsListFiltered = oldNewsListParsed.filter(
+                        (item) => item.id !== state.form?.id
+                    );
+                    newNewsList = [...oldNewsListFiltered, state.form];
+                } else {
+                    const today = new Date();
+
+                    const day = String(today.getDate()).padStart(2, "0");
+                    const month = String(today.getMonth() + 1).padStart(2, "0");
+                    const year = today.getFullYear();
+
+                    const formattedDate = `${day}.${month}.${year}`;
+                    state.form = {
+                        ...state.form,
+                        id: uuidv4(),
+                        createdAt: formattedDate,
+                    };
+                    newNewsList = [...oldNewsListParsed, state.form];
+                }
+            }
+
+            localStorage.setItem(
+                NEWS_LOCALSTORAGE_KEY,
+                JSON.stringify(newNewsList)
+            );
+            localStorage.removeItem(LOCAL_STORAGE_NEWS_EDIT_KEY);
+        },
     },
 });
 

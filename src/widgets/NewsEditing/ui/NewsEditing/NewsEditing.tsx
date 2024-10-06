@@ -47,14 +47,23 @@ export const NewsEditing = memo((props: NewsEditingProps) => {
     );
 
     const onDelete = useCallback((blockId: string) => {
-        dispatch(NewsActions.deleteBlock(blockId))
+        dispatch(NewsActions.deleteBlock(blockId));
     }, []);
+
+    const onSaveNews = useCallback(() => {
+        dispatch(NewsActions.onSaveEdit());
+        console.log(1);
+    }, []);
+
+    const onCancelEdit = useCallback(() => {}, []);
 
     return (
         <VStack max gap="16" className={classNames("", {}, [className])}>
             <HStack justify="between" max>
-                <Button color="error">Отменить</Button>
-                <Button color="success">Сохранить</Button>
+                <Button onClick={onSaveNews} color="error">
+                    Отменить
+                </Button>
+                <Button onClick={onSaveNews} color="success">Сохранить</Button>
             </HStack>
             <Card max padding="24">
                 <NewsCommonInfoEdit

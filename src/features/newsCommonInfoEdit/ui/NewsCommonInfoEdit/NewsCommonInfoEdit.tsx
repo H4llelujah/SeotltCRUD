@@ -4,6 +4,8 @@ import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 import { HStack } from "@/shared/ui/Stack/HStack/HStack";
 import { Input } from "@/shared/ui/Input/Input";
 import { AppImage } from "@/shared/ui/AppImage/AppImage";
+import { Loader } from "@/shared/ui/Loader/Loader";
+import cls from "./NewsCommonInfoEdit.module.scss";
 
 interface NewsCommonInfoEditProps {
     className?: string;
@@ -26,8 +28,10 @@ export const NewsCommonInfoEdit = memo((props: NewsCommonInfoEditProps) => {
         title,
     } = props;
 
+    const imgErrorFalback = <div className={cls.errorFallback}>NO PHOTO</div>;
+
     return (
-        <VStack className={classNames("", {}, [className])}>
+        <VStack gap="8" className={classNames("", {}, [className])}>
             <HStack max>
                 <Input
                     value={title}
@@ -50,7 +54,11 @@ export const NewsCommonInfoEdit = memo((props: NewsCommonInfoEditProps) => {
                 />
             </HStack>
             <HStack max>
-                <AppImage src={imgLink} />
+                <AppImage
+                    src={imgLink}
+                    fallback={<Loader />}
+                    errorFallback={imgErrorFalback}
+                />
             </HStack>
         </VStack>
     );

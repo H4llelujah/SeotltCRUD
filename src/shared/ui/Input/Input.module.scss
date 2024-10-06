@@ -3,46 +3,12 @@
     align-items: center;
     border-radius: 48px;
     padding: 8px 16px;
-    border: 2px solid var(--icon-redesigned);
+    border: 2px solid var(--input-border);
     width: 100%;
 }
 
-.s {
-    height: 32px;
-}
-
-.m {
-    height: 38px;
-}
-
-.l {
-    height: 44px;
-}
-
-.addonLeft,
-.addonRight {
-    display: flex;
-}
-
-.withAddonLeft {
-    padding-left: 8px;
-}
-
-.withAddonRight {
-    padding-right: 8px;
-}
-
 .focused {
-    border: 2px solid var(--accent-redesigned);
-
-    .addonLeft svg,
-    .addonRight svg {
-        color: var(--accent-redesigned);
-    }
-}
-
-.readonly {
-    opacity: 0.7;
+    border: 2px solid var(--accent-color);
 }
 
 .input {
@@ -50,10 +16,10 @@
     outline: none;
     border: none;
     width: 100%;
-    color: var(--text-redesigned);
+    color: var(--primary-color);
     text-shadow: 0 0 0 var(--primary-color);
 
     &::placeholder {
-        color: var(--hint-redesigned);
+        color: #635a5a;
     }
 }

@@ -18,11 +18,17 @@ export const NewsImageBlockCreator = memo(
 
         return (
             <VStack
+                max
+                gap="8"
                 className={classNames(cls.NewsImageBlockCreator, {}, [
                     className,
                 ])}
             >
-                <Input value={title} onChange={onChangeTitle} placeholder="Заголовок блока"/>
+                <Input
+                    value={title}
+                    onChange={onChangeTitle}
+                    placeholder="Заголовок блока"
+                />
                 <Input
                     value={link}
                     onChange={onChangeLink}

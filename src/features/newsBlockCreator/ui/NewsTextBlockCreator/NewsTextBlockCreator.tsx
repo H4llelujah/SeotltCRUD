@@ -3,6 +3,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import cls from "./NewsTextBlockCreator.module.scss";
 import { VStack } from "@/shared/ui/Stack/VStack/VStack";
 import { Input } from "@/shared/ui/Input/Input";
+import { Textarea } from "@/shared/ui/Textarea/Textarea";
 
 interface NewsTextBlockCreatorProps {
     className?: string;
@@ -17,6 +18,8 @@ export const NewsTextBlockCreator = memo((props: NewsTextBlockCreatorProps) => {
         props;
     return (
         <VStack
+            max
+            gap="8"
             className={classNames(cls.NewsTextBlockCreator, {}, [className])}
         >
             <Input
@@ -24,7 +27,7 @@ export const NewsTextBlockCreator = memo((props: NewsTextBlockCreatorProps) => {
                 value={title}
                 onChange={onChangeTitle}
             />
-            <div>здесь будет textarea</div>
+            <Textarea value={paragraph} onChange={onChangeParagraph} />
         </VStack>
     );
 });

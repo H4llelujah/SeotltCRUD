@@ -1,37 +1,23 @@
 import React, {
     InputHTMLAttributes,
     MutableRefObject,
-    ReactNode,
     memo,
-    useEffect,
     useRef,
     useState,
-} from 'react';
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import cls from './Input.module.scss';
-import { HStack } from '../Stack/HStack/HStack';
-import { Text } from '../Text/Text';
-
-
+} from "react";
+import { classNames, Mods } from "@/shared/lib/classNames/classNames";
+import cls from "./Input.module.scss";
 
 type HTMLInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
-    'value' | 'onChange' | 'readOnly' | 'size'
+    "value" | "onChange"
 >;
-
-type InputSize = 's' | 'm' | 'l';
 
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
-    label?: string;
     placeholder?: string;
     onChange?: (value: string) => void;
-    autoFocus?: boolean;
-    readonly?: boolean;
-    addonLeft?: ReactNode;
-    addonRight?: ReactNode;
-    size?: InputSize;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -40,28 +26,12 @@ export const Input = memo((props: InputProps) => {
         value,
         onChange,
         placeholder,
-        type = 'text',
-        autoFocus,
-        readonly,
-        addonLeft,
-        addonRight,
-        label,
-        size = 'm',
+        type = "text",
         ...otherProps
     } = props;
 
     const ref = useRef() as MutableRefObject<HTMLInputElement>;
     const [isFocused, setIsFocused] = useState(false);
-
-    useEffect(() => {
-        if (autoFocus) {
-            setIsFocused(true);
-            ref.current.focus();
-        }
-        return () => {
-            setIsFocused(false);
-        };
-    }, [autoFocus]);
 
     const onFocus = () => {
         setIsFocused(true);
@@ -76,20 +46,11 @@ export const Input = memo((props: InputProps) => {
     };
 
     const mods: Mods = {
-        [cls.readonly]: readonly,
         [cls.focused]: isFocused,
-        [cls.withAddonLeft]: Boolean(addonLeft),
-        [cls.withAddonRight]: Boolean(addonRight),
     };
 
     const input = (
-        <div
-            className={classNames(cls.InputWrapper, mods, [
-                className,
-                cls[size],
-            ])}
-        >
-            <div className={cls.addonLeft}>{addonLeft}</div>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
             <input
                 ref={ref}
                 type={type}
@@ -98,22 +59,11 @@ export const Input = memo((props: InputProps) => {
                 className={cls.input}
                 onFocus={onFocus}
                 onBlur={onBlur}
-                readOnly={readonly}
                 placeholder={placeholder}
                 {...otherProps}
             />
-            <div className={cls.addonRight}>{addonRight}</div>
         </div>
     );
-
-    if (label) {
-        return (
-            <HStack max gap="8">
-                <Text text={label} />
-                {input}
-            </HStack>
-        );
-    }
 
     return input;
 });
