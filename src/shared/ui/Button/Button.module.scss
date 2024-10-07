@@ -27,7 +27,7 @@
 }
 
 .filled {
-    background: var(--inverted-bg-color);
+    background: var(--invetred-primary-color);
     border: none;
     outline: none;
     border-radius: 34px;
@@ -35,7 +35,7 @@
 
 .outline {
     background: none;
-    border: 2px solid var(--inverted-bg-color);
+    border: 2px solid var(--invetred-primary-color);
     border-radius: 34px;
 
     &:hover {

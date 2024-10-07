@@ -2,13 +2,13 @@
     display: flex;
     align-items: center;
     border-radius: 48px;
-    padding: 8px 16px;
+    padding: 4px 8px;
     border: 2px solid var(--input-border);
     width: 100%;
 }
 
 .focused {
-    border: 2px solid var(--accent-color);
+    border: 2px solid var(--input-accent);
 }
 
 .input {

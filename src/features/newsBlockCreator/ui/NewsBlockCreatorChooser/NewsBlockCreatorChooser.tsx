@@ -42,11 +42,13 @@ export const NewsBlockCreatorChooser = memo(
         const setTextBlockType = useCallback(() => {
             setBlockType(NewsBlockType.TEXT);
             setIsVisible(true);
+            setValue('');
         }, []);
 
         const setImageBlockType = useCallback(() => {
             setBlockType(NewsBlockType.IMAGE);
             setIsVisible(true);
+            setTitle('');
         }, []);
 
         const onSave = useCallback(() => {
@@ -76,25 +78,25 @@ export const NewsBlockCreatorChooser = memo(
                     className,
                 ])}
             >
-                <HStack gap="8">
+                <VStack gap="8" max>
                     {error && (
                         <Text text="Все поля обязательны!" variant="error" />
                     )}
-                    <Button onClick={setTextBlockType}>
-                        Создать текстовый блок
+                    <Button fullWidth onClick={setTextBlockType}>
+                        Добавить текст
                     </Button>
-                    <Button onClick={setImageBlockType}>
-                        Создать блок с изображением
+                    <Button fullWidth onClick={setImageBlockType}>
+                        Добавить изображение
                     </Button>
-                </HStack>
-                {isVisible && blockType === NewsBlockType.TEXT ? (
+                </VStack>
+                {isVisible && blockType === NewsBlockType.TEXT && (
                     <NewsTextBlockCreator
                         title={title}
                         paragraph={value}
                         onChangeTitle={onChangeTitle}
                         onChangeParagraph={onChangeValue}
                     />
-                ) : (
+                )} {isVisible && blockType === NewsBlockType.IMAGE && (
                     <NewsImageBlockCreator
                         link={value}
                         title={title}
