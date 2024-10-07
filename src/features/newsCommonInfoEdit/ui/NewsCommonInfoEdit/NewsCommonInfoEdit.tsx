@@ -6,6 +6,7 @@ import { Input } from "@/shared/ui/Input/Input";
 import { AppImage } from "@/shared/ui/AppImage/AppImage";
 import { Loader } from "@/shared/ui/Loader/Loader";
 import { ImageErrorFallback } from "@/shared/ui/ImageErrorFallback/ImageErrorFallback";
+import cls from './NewsCommonInfoEdit.module.scss';
 
 interface NewsCommonInfoEditProps {
     className?: string;
@@ -53,6 +54,7 @@ export const NewsCommonInfoEdit = memo((props: NewsCommonInfoEditProps) => {
             </HStack>
             <HStack max>
                 <AppImage
+                    className={cls.img}
                     src={imgLink}
                     fallback={<Loader />}
                     errorFallback={<ImageErrorFallback />}

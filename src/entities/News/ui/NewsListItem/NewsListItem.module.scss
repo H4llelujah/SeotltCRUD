@@ -9,6 +9,15 @@
 }
 
 .subtitle {
-   max-height: 96px;
-   overflow: hidden;
+    max-height: 96px;
+    max-width: 250px;
+    overflow: hidden;
+}
+
+.card {
+    height: 100%;
+}
+
+.bottom {
+    margin-top: auto;
 }

@@ -20,8 +20,8 @@ interface NewsListItemProps {
 export const NewsListItem = memo((props: NewsListItemProps) => {
     const { className, news } = props;
     return (
-        <Card className={classNames(cls.NewsListItem, {}, [className])}>
-            <VStack>
+        <Card max className={classNames(cls.NewsListItem, {}, [className, 'test'])}>
+            <VStack className={cls.card}>
                 <AppImage
                     className={cls.img}
                     src={news.img}
