@@ -75,6 +75,7 @@ export const NewsEditing = memo((props: NewsEditingProps) => {
 
     const onCancelEdit = useCallback(() => {
         dispatch(NewsActions.onCancelEdit());
+        navigate(getRouteNews());
     }, []);
 
     return (

@@ -171,10 +171,17 @@ export const NewsSlice = createSlice({
                     JSON.stringify(newNewsList)
                 );
                 localStorage.removeItem(LOCAL_STORAGE_NEWS_EDIT_KEY);
-                state.succes = 'Изменения успешно применены'
+                state.succes = "Изменения успешно применены";
             } else {
-                state.error = 'Заполните все обязательные поля!'
+                state.error = "Заполните все обязательные поля!";
             }
+        },
+        resetValidate: (state) => {
+            state.form = undefined;
+            state.data = undefined;
+            state.succes = undefined;
+            state.error = undefined;
+            localStorage.removeItem(LOCAL_STORAGE_NEWS_EDIT_KEY);
         },
     },
 });

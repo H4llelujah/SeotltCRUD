@@ -1,7 +1,7 @@
 import { memo, useEffect } from "react";
 import { classNames } from "@/shared/lib/classNames/classNames";
 import { useSelector } from "react-redux";
-import { NewsList } from "@/entities/News";
+import { NewsActions, NewsList } from "@/entities/News";
 import { getNewsList } from "../model/selectors/newsPageSelectors";
 import { useAppDispatch } from "@/shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { NewsPageActions } from "../model/slice/NewsPageSlice";
@@ -18,6 +18,7 @@ const NewsPage = memo((props: NewsPageProps) => {
 
     useEffect(() => {
         dispatch(NewsPageActions.initNewsList());
+        dispatch(NewsActions.resetValidate());
     }, []);
 
     return (
